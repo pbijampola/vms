@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Admin\AttandenceController;
 use App\Http\Controllers\Admin\VisitorController;
 use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\UserController;
 
 
@@ -29,14 +31,19 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-  Route::resource('subscribe', SubscribeController::class);
-  Route::resource('/',AdminHomeController::class);
+    Route::resource('subscribe', SubscribeController::class);
+    Route::resource('/', AdminHomeController::class);
 
-  //visitor route
-  Route::resource('visitor',VisitorController::class);
-  //department route
-  Route::resource('department', DepartmentController::class);
-  //user route
-  Route::resource('user', UserController::class);
+    //visitor route
+    Route::resource('visitor', VisitorController::class);
+    //department route
+    Route::resource('department', DepartmentController::class);
+    //user route
+    Route::resource('user', UserController::class);
+
+    //Employee Route
+    Route::resource('employee', EmployeeController::class);
+    //Getting the attendance of Employees In the Office
+
 
 });

@@ -37,16 +37,23 @@
                 </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('department.index') }}">
+                <a class="sidebar-link" href="{{route('employee.index')}}">
+                    <i class="align-middle" data-feather="layers"></i> <span class="align-middle">Employee
+
+                    </span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="#">
                     <i class="align-middle" data-feather="layers"></i> <span class="align-middle">Attendance
-                        Management
+
                     </span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('department.index') }}">
                     <i class="align-middle" data-feather="layers"></i> <span class="align-middle">Invitee
-                        Management
+
                     </span>
                 </a>
             </li>
