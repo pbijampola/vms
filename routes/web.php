@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AttandenceController;
 use App\Http\Controllers\Admin\VisitorController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\InviteeController;
 use App\Http\Controllers\Admin\UserController;
 
 
@@ -40,10 +41,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('department', DepartmentController::class);
     //user route
     Route::resource('user', UserController::class);
+    //Route::get('user/profile',UserController::class,'profile');
 
     //Employee Route
     Route::resource('employee', EmployeeController::class);
     //Getting the attendance of Employees In the Office
+
+    //Invitation Route
+    Route::resource('invitee',InviteeController::class);
 
 
 });

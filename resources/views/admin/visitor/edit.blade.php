@@ -3,6 +3,7 @@
 @section('content')
     <form action="{{ route('visitor.update', $visitors->id) }}" method="POST">
         @csrf
+        @method('patch')
         <div class="col-12 ">
             <div class="card">
                 <div class="card-header">

@@ -3,52 +3,51 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">{{ __('EMPLOYEES') }}</h4>
-                <div class="row d-flex">
-                    <div class="text-right">
-                        <button class='btn btn-danger'>Export pdf</button>
-                        <a href='{{ route('employee.create') }}' class=" btn btn-primary text-white">Add Employee</a>
-                    </div>
-                </div>
+                <h4 class="card-title">{{ __('INVITATIONS') }}</h4>
+                {{-- <div class="row d-flex">
+
+                </div> --}}
+                <div class="text-right">
+                    <button type="button" class="btn btn-primary"><a href='{{ route('invitee.create') }}' class="text-white">Add Invitation</a></button>
+              </div>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>S/N</th>
-                                <th>image</th>
-                                <th>Employee Name</th>
+                                <th>Invitee Name</th>
                                 <th>Email</th>
-                                <th>Phone Number</th>
-                                <th>Department</th>
-                                <th>Employee Id</th>
-                                <th>Employee Role</th>
+                                <th>Mobile No.</th>
+                                <th>Host</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($employees as $key => $emp)
+                            @foreach ($invitees as $key => $inv)
                                 <tr>
                                     <td>{{ $key+1}}</td>
-                                    <td><img src="{{ $emp->getFirstMediaUrl('images', 'thumb') }}" / width="120px"></td>
-                                    <td>{{ $emp->employee_name }}</td>
-                                    <td>{{ $emp->email }}</td>
-                                    <td>{{ $emp->phone_number }}</td>
-                                    <td>{{ $emp->department }}</td>
-                                    <td>{{ $emp->employee_id }}</td>
-                                    <td>{{ $emp->employee_role }}</td>
-                                    {{-- <td>{{ $user->department }}</td> --}}
+                                    <td>{{ $inv->name }}</td>
+                                    <td>{{ $inv->email }}</td>
+                                    <td>{{ $inv->mobile_number }}</td>
+                                    <td>{{ $inv->host}}</td>
+                                    <td>{{ $inv->invite_date}}</td>
+                                    <td>{{ $inv->invite_time}}</td>
+
                                     <td>
                                         <div class='d-flex'>
                                             <div>
-                                                <a href="{{ route('department.show', $emp->id) }}"
+                                                <a href="{{ route('department.show', $inv->id) }}"
                                                     class="btn btn-primary mr-1"><i class="ti-eye"></i>More</a>
                                             </div>
                                             <div>
-                                                <a href="{{ route('employee.edit', $emp->id) }}"
+                                                <a href="{{ route('invitee.edit', $inv->id) }}"
                                                     class="btn btn-primary mr-1"><i class="ti-pencil"></i>Edit</a>
                                             </div>
                                             <div>
-                                                <form action="{{ route('employee.destroy', $emp->id) }}" method="POST">
+                                                <form action="{{ route('invitee.destroy', $inv->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger mr-1"><i

@@ -50,7 +50,6 @@ class VisitorController extends Controller
             'out_time'=>'required',
             'designation'=>'required|string',
             'description'=>'required|string|max:200'
-
         ]);
         Visitor::create([
             'name'=>$request->name,
@@ -101,7 +100,25 @@ class VisitorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated=$request->validate([
+            'name'=>'required|string|max:25',
+            'phone_number'=>'required|string',
+            'email'=>'required|email|unique:visitors',
+            'address'=>'required|string',
+            'gender'=>'required',
+            'visit_who'=>'required',
+            'in_time'=>'required',
+            'out_time'=>'required',
+            'designation'=>'required|string',
+            'description'=>'required|string|max:200'
+        ]);
+
+        $visitor=Visitor::find($id);
+        $visitor->update($validated);
+
+        notify()->success("Successfully Updated Visitor Details ");
+        return redirect()->route('visitor.index');
+
     }
 
     /**

@@ -92,7 +92,7 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         $employees=Employee::findorFail($id);
-        return view('admin.employee.index',compact('employees'));
+        return view('admin.employee.edit',compact('employees'));
     }
 
     /**
@@ -104,7 +104,24 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated=$request->validate([
+            'email' => 'required|email|unique:employees,email',
+            'phone_number' => 'required', //regex for validation
+            'department' => 'required',
+            'employee_role' => 'required|string',
+            'employee_name' => 'required|string|max:20',
+            //'check_in' => 'required|time',
+            //'check_out' => 'required|time',
+            //'total_hour' => 'required|numeric',
+            //'image' => 'required|image|mimes:png,jpg',
+        ]);
+
+        $employee=Employee::find($id);
+        $employee->update($validated);
+
+        notify()->success("Successfully Updated Employee Details");
+        return redirect()->route('employee.index');
+
     }
 
     /**

@@ -1,8 +1,11 @@
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
-        <a class="sidebar-brand" href="index.html">
+        <a class="sidebar-brand" href="#">
             <span class="align-middle">Zamda-vms</span>
         </a>
+        <div class="text-center text-white">
+            <p>Logged as {{auth()->user()->name}}</p>
+        </div>
 
         <ul class="sidebar-nav">
             <li class="sidebar-item active">
@@ -12,9 +15,9 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-profile.html">
+                <a class="sidebar-link" href="#">
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile
-                        Management</span>
+                        </span>
                 </a>
             </li>
             <li class="sidebar-item">

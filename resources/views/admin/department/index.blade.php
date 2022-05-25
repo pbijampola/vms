@@ -4,9 +4,9 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">{{ __('DEPARTMENT') }}</h4>
-                <div class="row d-flex">
-                    <a href='{{ route('department.create') }}' class='btn btn-primary'>Add
-                        Department</a>
+                <div class="text-right">
+                    <button class='btn btn-danger'>Export pdf</button>
+                    <a href='{{ route('department.create') }}' class=" btn btn-primary text-white">Add Department</a>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover">

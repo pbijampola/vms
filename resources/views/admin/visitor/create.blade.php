@@ -41,7 +41,7 @@
                 <div class="card-header">
                     <h5 class="card-title mb-2">Gender</h5>
                     <select class="form-select mb-3" name="gender">
-                        <option selected>What is your gender?</option>
+                        <option >What is your gender?</option>
                         <option value="{{ old('gender') }}">Male</option>
                         <option value="{{ old('gender') }}">Female</option>
                     </select>
@@ -60,7 +60,7 @@
                 <div class="card-header">
                     <h5 class="card-title mb-2">Visiting Who?</h5>
                     <select class="form-select mb-3" name="visit_who">
-                        <option selected>Select Visited Personel </option>
+                        <option >Select Visited Personel </option>
                         @foreach ($users as $user)
                             <option value="{{ old('visit_who') }}">{{ $user->name }}</option>
                         @endforeach

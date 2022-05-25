@@ -3,21 +3,21 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">All Users</h4>
-                <div>
-                    <button class='btn btn-secondary'><a href='{{ route('visitor.create') }}'>Add
-                            Visitor</a></button>
+                <h4 class="card-title text-left">All Users</h4>
+                <div class="text-right">
+                    <button class='btn btn-primary'>Export pdf</button>
+                    <a href='{{ route('user.create') }}' class=" btn btn-primary text-white">Add New User</a>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>S/N</th>
+                                {{-- <th><img src="{{$users->getFirstMediaUrl('photos','thumb')}}" / width="120px"></th> --}}
                                 <th>Full Name</th>
                                 <th>Phone Number</th>
                                 <th>Email</th>
                                 <th>Address</th>
-                                <th>photo</th>
                                 <th>Department</th>
                                 <th>Action</th>
                             </tr>

@@ -38,7 +38,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
             'name' => 'required|string|max:25',
             'email' => 'required|email|unique:users',
             'phone_number' => 'required',
@@ -47,7 +46,7 @@ class UserController extends Controller
             'department' => 'required|string|max:15',
             'password' => 'required|min:8|max:16'
         ]);
-        User::create([
+        $user=User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
@@ -56,6 +55,9 @@ class UserController extends Controller
             'department' => $request->department,
             'password' => $request->password
         ]);
+        if($request->hasFile('photo') && $request->file('photo')->isValid()){
+            $user->addMediaFromRequest('photo')->toMediaCollection("photos");
+        }
         notify()->success('New User Added Successfully');
         return redirect()->route('user.index');
     }
@@ -68,7 +70,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.user.profile');
     }
 
     /**
@@ -92,7 +94,22 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated=$request->validate([
+            'name' => 'required|string|max:25',
+            'email' => 'required|email|unique:users',
+            'phone_number' => 'required',
+            'address' => 'required|string',
+            'photo' => 'required|file',
+            'department' => 'required|string|max:15',
+            'password' => 'required|min:8|max:16'
+        ]);
+        $user=User::find($id);
+        $user->update($validated);
+
+        notify()->success("Successfully Updated User Details");
+        return redirect()->route('user.index');
+
+
     }
 
     /**
@@ -104,5 +121,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function profile(){
+
     }
 }

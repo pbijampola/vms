@@ -88,7 +88,19 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated=$request->validate([
+
+            'department_name' => 'required|string|max:20',
+            'office_number' => 'required|string',
+            'hod' => 'required|string|max:25',
+            'assistant' => 'required|string|max:25'
+
+        ]);
+        $department=Department::find($id);
+        $department->update($validated);
+
+        notify()->success("Department Update Successfully");
+        return redirect()->route('department.index');
     }
 
     /**
