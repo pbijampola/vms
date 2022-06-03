@@ -9,7 +9,7 @@
 
         <ul class="sidebar-nav">
             <li class="sidebar-item active">
-                <a class="sidebar-link" href="{{route('profile.index')}}">
+                <a class="sidebar-link" href="{{route('profile.create')}}">
                      Profile
                 </a>
             </li>
