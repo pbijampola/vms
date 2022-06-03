@@ -94,7 +94,7 @@ class InviteeController extends Controller
     {
         $validated=$request->validate([
             'name'=>'required|string|max:25',
-            'mobile_number'=>'required', //regex for validating
+            'mobile_number'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:10', //regex for validating
             'email'=>'required|email|unique:invitees,email',
             'host'=>'required|string|max:25',
             'purpose'=>'required|string|max:200',
@@ -117,6 +117,11 @@ class InviteeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if($id != null){
+            $invitee=Invitee::where('id',$id);
+            $invitee->delete($id);
+            notify()->success("Invite Deleted Successfully");
+            return redirect()->route('invitee.index');
+        }
     }
 }

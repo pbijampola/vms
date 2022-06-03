@@ -42,8 +42,8 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
             'phone_number' => 'required',
             'address' => 'required|string',
-            'photo' => 'required|file',
-            'department' => 'required|string|max:15',
+            'image' => 'required|file',
+            'role' => 'required|string|max:15',
             'password' => 'required|min:8|max:16'
         ]);
         $user=User::create([
@@ -51,8 +51,8 @@ class UserController extends Controller
             'email' => $request->email,
             'phone_number' => $request->phone_number,
             'address' => $request->address,
-            'photo' => $request->photo,
-            'department' => $request->department,
+            'image' => $request->photo,
+            'role' => $request->role,
             'password' => $request->password
         ]);
         if($request->hasFile('photo') && $request->file('photo')->isValid()){
@@ -97,7 +97,7 @@ class UserController extends Controller
         $validated=$request->validate([
             'name' => 'required|string|max:25',
             'email' => 'required|email|unique:users',
-            'phone_number' => 'required',
+            'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:10',
             'address' => 'required|string',
             'photo' => 'required|file',
             'department' => 'required|string|max:15',
@@ -120,7 +120,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if($id != null){
+            $users=User::where('id',$id);
+            $users->delete($id);
+
+            notify()->success("User Delete Successfully");
+            return redirect()->route('user.index');
+        }
     }
     public function profile(){
 

@@ -69,7 +69,7 @@
                 </div>
                 <div class="card-header">
                     <h5 class="card-title mb-2">Description/Reason</h5>
-                    <textarea class="form-control" name="description" rows="2">{{ $visitors->description }}</textarea>
+                    <textarea class="summernote form-control" name="description" rows="2">{{ $visitors->description }}</textarea>
                     @error('description')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror

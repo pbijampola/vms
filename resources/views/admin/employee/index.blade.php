@@ -6,7 +6,7 @@
                 <h4 class="card-title">{{ __('EMPLOYEES') }}</h4>
                 <div class="row d-flex">
                     <div class="text-right">
-                        <button class='btn btn-danger'>Export pdf</button>
+                        <a href="#" class=" btn btn-danger text-white background-color-red">Export pdf</a>
                         <a href='{{ route('employee.create') }}' class=" btn btn-primary text-white">Add Employee</a>
                     </div>
                 </div>
@@ -61,6 +61,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {!! $employees->links() !!}
                 </div>
             </div>
         </div>

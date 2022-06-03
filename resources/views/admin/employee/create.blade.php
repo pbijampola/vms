@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="text-center mt-4">
-    <h1 class="h2">Add New Department</h1>
+    <h1 class="h2">Add New Employee</h1>
 </div>
 
 <div class="card">
@@ -44,8 +44,12 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Department</label>
-                    <input class="form-control form-control-lg" type="text" name="department"
-                         value="{{ old('department') }}" />
+                    <select class="form-select mb-3" name="department">
+                        @foreach ($departments as $dept)
+                            <option value="">**select department**</option>
+                            <option value="{{$dept->id}}">{{ $dept->department_name }}</option>
+                        @endforeach
+                    </select>
                     @error('department')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror

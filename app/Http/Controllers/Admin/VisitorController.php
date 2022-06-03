@@ -102,7 +102,7 @@ class VisitorController extends Controller
     {
         $validated=$request->validate([
             'name'=>'required|string|max:25',
-            'phone_number'=>'required|string',
+            'phone_number'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:10',
             'email'=>'required|email|unique:visitors',
             'address'=>'required|string',
             'gender'=>'required',
@@ -129,6 +129,12 @@ class VisitorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if($id!=null){
+            $visitors=Visitor::where('id',$id);
+            $visitors->delete($id);
+
+            notify()->success("Deleted Visitor Successfully");
+            return redirect()->route('visitor.index');
+        }
     }
 }

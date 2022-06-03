@@ -35,7 +35,6 @@
                                     <td>{{ $inv->host}}</td>
                                     <td>{{ $inv->invite_date}}</td>
                                     <td>{{ $inv->invite_time}}</td>
-
                                     <td>
                                         <div class='d-flex'>
                                             <div>

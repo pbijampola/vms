@@ -12,8 +12,7 @@ class Visitor extends Model
     protected $fillable=['name','phone_number','email','address','gender','description','visit_who','in_time','out_time','designation'];
 
     //relationship between visitor and user
-    public function user(): BelongsTo
-        {
-            return $this->belongsTo(User::class);
-        }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

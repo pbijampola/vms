@@ -21,7 +21,7 @@
                     <div class="mb-3">
                         <label class="form-label">Office Number</label>
                         <input class="form-control form-control-lg" type="text" name="office_number"
-                            placeholder="Enter Office Number" value="{{ old('office_number') }}" />
+                             value="{{ old('office_number') }}" />
                         @error('office_number')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -36,7 +36,7 @@
                     <div class="mb-3">
                         <label class="form-label">Assistant of Department</label>
                         <input class="form-control form-control-lg" type="text" name="assistant"
-                            placeholder="Enter Assistant of Department" value="{{ old('assistant') }}" />
+                            value="{{ old('assistant') }}" />
                         @error('assistant')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror

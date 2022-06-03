@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Barryvdh\DomPDF\PDF;
 
 class EmployeeController extends Controller
 {
@@ -16,7 +18,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees=Employee::all();
+        $employees=Employee::paginate(2);
         return view('admin.employee.index',compact('employees'));
     }
 
@@ -27,7 +29,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('admin.employee.create');
+        $departments=Department::all();
+        return view('admin.employee.create',compact('departments'));
     }
 
     /**
@@ -106,7 +109,7 @@ class EmployeeController extends Controller
     {
         $validated=$request->validate([
             'email' => 'required|email|unique:employees,email',
-            'phone_number' => 'required', //regex for validation
+            'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:10', //regex for validation
             'department' => 'required',
             'employee_role' => 'required|string',
             'employee_name' => 'required|string|max:20',
@@ -132,6 +135,14 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if($id!=""){
+            $employee=Employee::where('id',$id);
+            $employee->delete($id);
+            notify()->success("Employee Deleted Successfully");
+            return redirect()->route('employee.index');
+
+        }
     }
+
+
 }

@@ -24,5 +24,8 @@ class Employee extends Model implements HasMedia
         // 'check_out',
         // 'total_hour'
     ];
+    public function department(){
+        return $this->belongsToMany(Department::class);
+    }
 
 }

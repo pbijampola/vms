@@ -45,7 +45,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Purpose</label>
-                   <textarea class="form-control" name="purpose">{{$invitee->purpose}}</textarea>
+                   <textarea class="summernote form-control" name="purpose">{{$invitee->purpose}}</textarea>
                     @error('purpose')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror

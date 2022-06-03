@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Department;
+use App\Models\Employee;
+use Barryvdh\DomPDF\PDF;
 
 class DepartmentController extends Controller
 {
@@ -26,7 +28,8 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('admin.department.create');
+        $employees=Employee::all();
+        return view('admin.department.create',compact('employees'));
     }
 
     /**
@@ -39,7 +42,7 @@ class DepartmentController extends Controller
     {
         $request->validate([
 
-            'department_name' => 'required|string|max:20',
+            'department_name' => 'required|string',
             'office_number' => 'required|string',
             'hod' => 'required|string|max:25',
             'assistant' => 'required|string|max:25'
@@ -111,6 +114,19 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if($id != null) {
+            $department= Department::where('id', $id);
+            $department->delete($id);
+            notify()->success("Department Deleted Successfully");
+            return redirect()->route('department.index');
+        }
     }
+
+
+    // //download pdf
+    // public function downloadPDF(){
+    //     $employees=Employee::all();
+    //     $pdf=PDF::loadView('pdf',compact('employees'));
+    //     return $pdf->download('employees.pdf');
+    // }
 }

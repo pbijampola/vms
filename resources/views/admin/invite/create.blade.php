@@ -44,7 +44,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Purpose</label>
-                   <textarea class="form-control" name="purpose">{{old('purpose')}}</textarea>
+                   <textarea class="summernote form-control" name="purpose">{{old('purpose')}}</textarea>
                     @error('purpose')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -73,5 +73,10 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('.summernote').summernote();
+    });
+</script>
 
 @endsection

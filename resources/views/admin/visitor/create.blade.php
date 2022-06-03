@@ -41,9 +41,8 @@
                 <div class="card-header">
                     <h5 class="card-title mb-2">Gender</h5>
                     <select class="form-select mb-3" name="gender">
-                        <option >What is your gender?</option>
-                        <option value="{{ old('gender') }}">Male</option>
-                        <option value="{{ old('gender') }}">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
                     </select>
                     @error('gender')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -60,9 +59,8 @@
                 <div class="card-header">
                     <h5 class="card-title mb-2">Visiting Who?</h5>
                     <select class="form-select mb-3" name="visit_who">
-                        <option >Select Visited Personel </option>
                         @foreach ($users as $user)
-                            <option value="{{ old('visit_who') }}">{{ $user->name }}</option>
+                            <option value="{{$user->id}}">{{ $user->name }}</option>
                         @endforeach
                     </select>
                     @error('visit_who')
@@ -87,7 +85,7 @@
                 </div>
                 <div class="card-header">
                     <h5 class="card-title mb-2">Description/Reason</h5>
-                    <textarea class="form-control" name="description" rows="2" placeholder="Reason for visiting"
+                    <textarea class="summernote form-control" name="description" rows="2" placeholder="Reason for visiting"
                         id="editor1">value="{{ old('description') }}"</textarea>
                     @error('description')
                         <div class="alert alert-danger">{{ $message }}</div>

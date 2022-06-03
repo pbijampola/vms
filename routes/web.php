@@ -8,8 +8,10 @@ use App\Http\Controllers\Admin\VisitorController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\InviteeController;
+use App\Http\Controllers\Admin\PDFController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\UserController;
-
+use App\Models\Employee;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,10 +43,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('department', DepartmentController::class);
     //user route
     Route::resource('user', UserController::class);
-    //Route::get('user/profile',UserController::class,'profile');
+    Route::resource('user/profile',ProfileController::class);
 
     //Employee Route
     Route::resource('employee', EmployeeController::class);
+    //Route::get('downloadpdf',[PDFController::class,'downloadPDF'])->name('downloadpf');
     //Getting the attendance of Employees In the Office
 
     //Invitation Route

@@ -1,89 +1,63 @@
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
-        <a class="sidebar-brand" href="#">
+        <a class="sidebar-brand" href="/admin">
             <span class="align-middle">Zamda-vms</span>
         </a>
         <div class="text-center text-white">
-            <p>Logged as {{auth()->user()->name}}</p>
+            <p>Logged as {{ auth()->user()->name }}</p>
         </div>
 
         <ul class="sidebar-nav">
             <li class="sidebar-item active">
-                <a class="sidebar-link" href="index.html">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                <a class="sidebar-link" href="{{route('profile.index')}}">
+                     Profile
                 </a>
             </li>
 
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="#">
-                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile
-                        </span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('user.index') }}">
-                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">User Management
-                    </span>
-                </a>
-            </li>
-            <li class="sidebar-item">
+
+            <li class="sidebar-item active" >
                 <a class="sidebar-link" href="{{ route('visitor.index') }}">
-                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Visitor Log
-                    </span>
+                    Visitor Log
                 </a>
             </li>
-            <li class="sidebar-item">
+            <li class="sidebar-item active">
                 <a class="sidebar-link" href="{{ route('department.index') }}">
-                    <i class="align-middle" data-feather="layers"></i> <span class="align-middle">Department
-                        Management
-                    </span>
+                    Department
                 </a>
             </li>
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="{{route('employee.index')}}">
-                    <i class="align-middle" data-feather="layers"></i> <span class="align-middle">Employee
-
-                    </span>
+            <li class="sidebar-item active">
+                <a class="sidebar-link" href="{{ route('employee.index') }}">
+                    Employee
                 </a>
             </li>
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="#">
-                    <i class="align-middle" data-feather="layers"></i> <span class="align-middle">Attendance
-
-                    </span>
+            <li class="sidebar-item active">
+                <a class="sidebar-link" href="{{ route('invitee.index') }}">
+                    Invitee
                 </a>
             </li>
-            <li class="sidebar-item">
+            <li class="sidebar-item active">
                 <a class="sidebar-link" href="{{ route('department.index') }}">
-                    <i class="align-middle" data-feather="layers"></i> <span class="align-middle">Invitee
-
-                    </span>
+                    Notifications
                 </a>
             </li>
-            <li class="sidebar-item">
+            <li class="sidebar-item active">
                 <a class="sidebar-link" href="{{ route('department.index') }}">
-                    <i class="align-middle" data-feather="mail"></i> <span class="align-middle">Notification
-                        Management
-                    </span>
+                    Roles
                 </a>
             </li>
-            <li class="sidebar-item">
+            <li class="sidebar-item active">
                 <a class="sidebar-link" href="{{ route('department.index') }}">
-                    <i class="align-middle" data-feather="layers"></i> <span class="align-middle">Report
-                        Management
-                    </span>
+                    Permissions
                 </a>
             </li>
-            <li class="sidebar-item">
+            <li class="sidebar-item active">
                 <a class="sidebar-link" href="{{ route('department.index') }}">
-                    <i class="align-middle" data-feather="settings"></i> <span class="align-middle">General Settings
-                    </span>
+                    Report
                 </a>
             </li>
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-sign-in.html">
-                    <i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Logo-Out
-                    </span>
+            <li class="sidebar-item active">
+                <a class="sidebar-link" href="{{ route('department.index') }}">
+                    General Settings
                 </a>
             </li>
         </ul>
