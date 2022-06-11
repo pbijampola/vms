@@ -5,8 +5,9 @@
             <div class="card-body">
                 <h4 class="card-title">{{ __('DEPARTMENT') }}</h4>
                 <div class="text-right">
-                    <button class='btn btn-danger'>Export pdf</button>
-                    <a href='{{ route('department.create') }}' class=" btn btn-primary text-white">Add Department</a>
+                    <button class='btn btn-md' style="background-color: #FEFE69">Export pdf</button>
+                    <button class='btn btn-md' style="background-color: #DDF969">Export csv</button>
+                    <a href='{{ route('department.create') }}' class=" btn btn-md" style="background-color: #A9F36A">Add Department</a>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover">

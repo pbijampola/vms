@@ -8,7 +8,10 @@
 
                 </div> --}}
                 <div class="text-right">
-                    <button type="button" class="btn btn-primary"><a href='{{ route('invitee.create') }}' class="text-white">Add Invitation</a></button>
+                    <button class='btn btn-md' style="background-color: #FEFE69">Export pdf</button>
+                    <button class='btn btn-md' style="background-color: #DDF969">Export csv</button>
+                    <a href='{{ route('invitee.create') }}' class=" btn btn-md" style="background-color: #A9F36A">Invite</a>
+
               </div>
                 <div class="table-responsive">
                     <table class="table table-hover">

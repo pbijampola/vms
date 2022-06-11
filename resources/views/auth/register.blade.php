@@ -5,7 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+
+                <div class="card-body text-center">
+                    <img src="{{asset('static/img/avatars/tanesco.png')}}" alt="Christina Mason" class="img-fluid rounded-circle mb-2" width="128" height="128" />
+
+                    <div class="text-muted mb-4">
+                        <h5 class="card-title mb-0">Register to Tanesco Visitor Management System</h5>
+                    </div>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">

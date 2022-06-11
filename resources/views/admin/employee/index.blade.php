@@ -6,8 +6,9 @@
                 <h4 class="card-title">{{ __('EMPLOYEES') }}</h4>
                 <div class="row d-flex">
                     <div class="text-right">
-                        <a href="#" class=" btn btn-danger text-white background-color-red">Export pdf</a>
-                        <a href='{{ route('employee.create') }}' class=" btn btn-primary text-white">Add Employee</a>
+                        <button class='btn btn-md' style="background-color: #FEFE69">Export pdf</button>
+                        <button class='btn btn-md' style="background-color: #DDF969">Export csv</button>
+                        <a href='{{ route('employee.create') }}' class=" btn btn-md" style="background-color: #A9F36A">Add Employee</a>
                     </div>
                 </div>
                 <div class="table-responsive">

@@ -67,7 +67,7 @@
                 </div>
                     <div class="text-center mt-5">
                         {{-- <a href="index.html" class="btn btn-lg btn-primary">Sign up</a> --}}
-                        <button type="submit" class="btn btn-lg btn-primary">Invite</button>
+                        <button type="submit" class="btn btn-lg btn-primary">Send Invitation</button>
                     </div>
             </form>
         </div>
