@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
+use App\Providers\RouteServiceProvider;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -69,5 +72,23 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+
+    $role = Role::where('name', 'user');
+        if (!$role->exists()) {
+            $role = Role::create(['name' => 'user']);
+            $user->assignRole($role);
+        } else {
+            $user->assignRole($role->first());
+        }
+        event(new Registered($user));
+
+        if (!Auth::check()) {
+            Auth::login($user);
+
+            return redirect(RouteServiceProvider::HOME);
+        }
+
+        return redirect()->back();
     }
 }
