@@ -1,17 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SubscribeController;
-use App\Http\Controllers\Admin\AdminHomeController;
-use App\Http\Controllers\Admin\AttandenceController;
-use App\Http\Controllers\Admin\VisitorController;
-use App\Http\Controllers\Admin\DepartmentController;
-use App\Http\Controllers\Admin\EmployeeController;
-use App\Http\Controllers\Admin\InviteeController;
-use App\Http\Controllers\Admin\PDFController;
-use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\UserController;
 use App\Models\Employee;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PDFController;
+use App\Http\Controllers\SubscribeController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\InviteeController;
+use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\VisitorController;
+use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\AttandenceController;
+use App\Http\Controllers\Admin\DepartmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('subscribe', SubscribeController::class);
-    Route::resource('/', AdminHomeController::class);
+    //Route::resource('/', AdminHomeController::class);
+    Route::get('/',[DashboardController::class ,'index']);
 
     //visitor route
     Route::resource('visitor', VisitorController::class);
