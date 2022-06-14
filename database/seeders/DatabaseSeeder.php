@@ -17,5 +17,10 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeedTable::class);
         $this->call(DepartmentSeedTable::class);
 
+        //factory(App\Models\Employee::class,50)->create();
+        \App\Models\Employee::factory()->count(50)->create();
+        \App\Models\Invitee::factory()->count(50)->create();
+        \App\Models\Department::factory()->count(10)->create();
+
     }
 }

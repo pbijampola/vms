@@ -15,7 +15,7 @@ class InviteeController extends Controller
      */
     public function index()
     {
-        $invitees=Invitee::all();
+        $invitees=Invitee::paginate(10);
         return view('admin.invite.index',compact('invitees'));
     }
 
