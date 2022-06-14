@@ -35,7 +35,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth','role:admin']], function () {
     Route::resource('subscribe', SubscribeController::class);
     //Route::resource('/', AdminHomeController::class);
     Route::get('/',[DashboardController::class ,'index']);
