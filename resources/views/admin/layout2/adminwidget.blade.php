@@ -9,7 +9,7 @@
             <div class="col-xl-12 col-xxl-5 d-flex">
                 <div class="w-100">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <div class="card bg-warning text-white">
                                 <div class="card-body">
                                     <div class="row">
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <div class="card bg-secondary text-white">
                                 <div class="card-body">
                                     <div class="row">
@@ -96,7 +96,7 @@
                                 </div>
                             </div>
                         </div>
-                    <div class='col-sm-6'>
+                    <div class='col-sm-4'>
                         <div class="card bg-danger text-white">
                             <div class="card-body">
                                 <div class="row">

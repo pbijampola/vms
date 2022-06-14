@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Database\Seeders\SeedAdminTable;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,8 +15,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $this->call(AdminSeedTable::class);
+        $this->call(RoleTableSeed::class);
+        $this->call(SeedAdminTable::class);
         $this->call(DepartmentSeedTable::class);
+
 
         //factory(App\Models\Employee::class,50)->create();
         \App\Models\Employee::factory()->count(50)->create();

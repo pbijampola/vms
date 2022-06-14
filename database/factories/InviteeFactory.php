@@ -19,7 +19,7 @@ class InviteeFactory extends Factory
             'mobile_number'=>$this->faker->phoneNumber,
             'host'=>$this->faker->name,
             'purpose'=>$this->faker->paragraph(20),
-            'invite_date'=>$this->faker->dateTimeBetween('-1 week','+1 week'),
+            'invite_date'=>$this->faker->date('-1 week','+1 week'),
             'invite_time'=>$this->faker->date('H:i:s', rand(1,54000))
         ];
     }

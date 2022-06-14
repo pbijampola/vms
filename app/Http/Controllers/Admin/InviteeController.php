@@ -56,7 +56,7 @@ class InviteeController extends Controller
             'invite_time'=>$request->invite_time
 
         ]);
-        notify()->success('Initation has been sent');
+        notify()->success('Invitation has been sent');
         return redirect()->route('invitee.index');
     }
 

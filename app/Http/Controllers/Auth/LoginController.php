@@ -37,4 +37,9 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    // public function authenticated(){
+    //     $user=Auth::user();
+    //     event(new LoginHistory($user));
+    // }
 }

@@ -41,7 +41,7 @@
                 </a>
             </li>
             <li class="sidebar-item active">
-                <a class="sidebar-link" href="{{ route('department.index') }}">
+                <a class="sidebar-link" href="{{ route('role.index') }}">
                     Roles
                 </a>
             </li>
