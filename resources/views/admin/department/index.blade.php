@@ -47,7 +47,7 @@
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger mr-1"><i
+                                                    <button type="submit" class="btn btn-danger mr-1" onclick="return confirm('Are You Sure To Delete')"><i
                                                             class="ti-trash"></i>Delete</button>
                                                 </form>
                                             </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\PDFController;
 use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\DeleteController;
 use App\Http\Controllers\Admin\InviteeController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\VisitorController;
@@ -30,7 +31,14 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Auth::routes();
+Auth::routes(['register'=>false]);
+
+// Auth::routes([
+//     'register' => false, // Register Routes...
+//     'reset' => false, // Reset Password Routes...
+//     'verify' => false, // Email Verification Routes...
+//   ]);
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -55,6 +63,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','role:admin']], funct
 
     //Invitation Route
     Route::resource('invitee',InviteeController::class);
+
+    Route::delete('invite/{id}',[DeleteController::class, 'destroy1']);
+
 
     //Role Route
     Route::resource('role',RoleController::class);

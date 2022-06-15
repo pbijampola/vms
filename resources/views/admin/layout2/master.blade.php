@@ -132,5 +132,6 @@
 
 </body>
 @include('admin.layout2.summernote')
+@include('admin.layout2.detetescript')
 
 </html>

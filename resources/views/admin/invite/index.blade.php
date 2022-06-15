@@ -52,9 +52,21 @@
                                                 <form action="{{ route('invitee.destroy', $inv->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger mr-1"><i
+                                                    <button type="submit" class="btn btn-danger mr-1" onclick="return confirm('Are You Sure To Delete')"><i
                                                             class="ti-trash"></i>Delete</button>
                                                 </form>
+                                                {{-- <a href="{{ route('invitee.destroy',$inv->id) }}" class="btn btn-danger btn-sm"
+                                                    data-tr="tr_{{$inv->id}}"
+                                                    data-toggle="confirmation"
+                                                    data-btn-ok-label="Delete" data-btn-ok-icon="fa fa-remove"
+                                                    data-btn-ok-class="btn btn-sm btn-danger"
+                                                    data-btn-cancel-label="Cancel"
+                                                    data-btn-cancel-icon="fa fa-chevron-circle-left"
+                                                    data-btn-cancel-class="btn btn-sm btn-default"
+                                                    data-title="Are you sure you want to delete ?"
+                                                    data-placement="left" data-singleton="true">
+                                                     Delete
+                                                 </a> --}}
                                             </div>
                                         </div>
                                     </td>
@@ -68,4 +80,47 @@
         </div>
     </div>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[data-toggle=confirmation]').confirmation({
+                rootSelector: '[data-toggle=confirmation]',
+                onConfirm: function (event, element) {
+                    element.trigger('confirm');
+                }
+            });
+
+
+            $(document).on('confirm', function (e) {
+                var ele = e.target;
+                e.preventDefault();
+
+
+                $.ajax({
+                    url: ele.href,
+                    type: 'DELETE',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    success: function (data) {
+                        if (data['success']) {
+                            $("#" + data['tr']).slideUp("slow");
+                            alert(data['success']);
+                        } else if (data['error']) {
+                            alert(data['error']);
+                        } else {
+                            alert('Whoops Something went wrong!!');
+                        }
+                    },
+                    error: function (data) {
+                        alert(data.responseText);
+                    }
+                });
+
+
+                return false;
+            });
+        });
+    </script>
+
+
 @endsection
+
+
