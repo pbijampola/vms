@@ -41,13 +41,13 @@
                 </a>
             </li>
             <li class="sidebar-item active">
-                <a class="sidebar-link" href="{{ route('role.index') }}">
-                    Roles
+                <a class="sidebar-link" href="{{ route('user.index') }}">
+                    Users
                 </a>
             </li>
             <li class="sidebar-item active">
-                <a class="sidebar-link" href="{{ route('department.index') }}">
-                    Permissions
+                <a class="sidebar-link" href="{{ route('role.index') }}">
+                    Role & Permissions
                 </a>
             </li>
             <li class="sidebar-item active">

@@ -49,10 +49,27 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                        <label class="form-label">Gender</label>
+                        <select class="form-select mb-3" name="gender">
+                            <option value="">**select gender**</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                        @error('gender')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">Role</label>
-                        <input class="form-control form-control-lg" type="text" name="role"
-                            value="{{ old('role') }}" />
-                        @error('department')
+                        <select class="form-select mb-3" name="role">
+                           <optgroup>
+                            <option value="">--select role--</option>
+                            @foreach ($roles as $role)
+                                <option value="{{$role->id}}">{{ $role->name }}</option>
+                            @endforeach
+                           </optgroup>
+                        </select>
+                        @error('role')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>

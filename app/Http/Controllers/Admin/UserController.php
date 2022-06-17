@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Role;
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 class UserController extends Controller
 {
@@ -15,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::orderBy('id','DESC')->get();
         return view('admin.user.index', compact('users'));
     }
 
@@ -26,7 +29,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        $roles=Role::get();
+        return view('admin.user.create',compact('roles'));
     }
 
     /**
@@ -42,7 +46,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
             'phone_number' => 'required',
             'address' => 'required|string',
-            'image' => 'required|file',
+            'gender' => 'required|string',
             'role' => 'required|string|max:15',
             'password' => 'required|min:8|max:16'
         ]);
@@ -51,13 +55,15 @@ class UserController extends Controller
             'email' => $request->email,
             'phone_number' => $request->phone_number,
             'address' => $request->address,
-            'image' => $request->photo,
+            'gender' => $request->gender,
             'role' => $request->role,
             'password' => $request->password
         ]);
         if($request->hasFile('photo') && $request->file('photo')->isValid()){
             $user->addMediaFromRequest('photo')->toMediaCollection("photos");
         }
+
+        //dd($user);
         notify()->success('New User Added Successfully');
         return redirect()->route('user.index');
     }
@@ -81,8 +87,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $roles=Role::get();
         $users = User::findorFail($id);
-        return view('admin.user.edit', compact('users'));
+        return view('admin.user.edit', compact('users','roles'));
     }
 
     /**
@@ -99,10 +106,16 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
             'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:10',
             'address' => 'required|string',
-            'photo' => 'required|file',
+            'gender' => 'required|string',
+            'role'=>'required|string',
             'department' => 'required|string|max:15',
             'password' => 'required|min:8|max:16'
         ]);
+
+        if($request->hasFile('photo') && $request->file('photo')->isValid()){
+            $user->addMediaFromRequest('photo')->toMediaCollection("photosUpdated");
+        }
+
         $user=User::find($id);
         $user->update($validated);
 

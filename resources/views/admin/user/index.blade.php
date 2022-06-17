@@ -13,12 +13,13 @@
                         <thead>
                             <tr>
                                 <th>S/N</th>
-                                {{-- <th><img src="{{$users->getFirstMediaUrl('photos','thumb')}}" / width="120px"></th> --}}
+                                <th>Image</th>
                                 <th>Full Name</th>
                                 <th>Phone Number</th>
                                 <th>Email</th>
                                 <th>Address</th>
-                                <th>Department</th>
+                                <th>Role</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -26,18 +27,26 @@
                             @foreach ($users as $key => $user)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
+                                    <td><img class="rounded-circle" src="{{$user->getFirstMediaUrl('photos','thumb')}}" / width="120px"></td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->phone_number }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->address }}</td>
-                                    <td>{{ $user->photo }}</td>
-                                    <td>{{ $user->department }}</td>
+                                    <td>{{ $user->gender}}</td>
+                                    <td>{{ $user->role}}</td>
+                                    <td>
+                                        @if ($user->status==1)
+                                            <span class="badge badge-primary">ACTIVE</span>
+                                        @else
+                                           <span class="badge badge-danger">INACTIVE</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <div class='d-flex'>
-                                            <div>
+                                            {{-- <div>
                                                 <a href="{{ route('user.show', $user->id) }}"
                                                     class="btn btn-primary mr-1"><i class="ti-eye"></i>More</a>
-                                            </div>
+                                            </div> --}}
                                             <div>
                                                 <a href="{{ route('user.edit', $user->id) }}"
                                                     class="btn btn-primary mr-1"><i class="ti-pencil"></i>Edit</a>
